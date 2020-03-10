@@ -73,12 +73,12 @@ void IsisMain() {
   FileName transFile;
 
   // Translate the Archive group
-  transFile = transDir + "kaguyamiArchive.trn";
+  transFile = transDir + "KaguyaMiArchive.trn";
   PvlToPvlTranslationManager archiveXlater(inputLabel, transFile.expanded());
   archiveXlater.Auto(*(outputLabel));
 
   // Translate the Instrument group
-  transFile = transDir + "kaguyamiInstrument.trn";
+  transFile = transDir + "KaguyaMiInstrument.trn";
   PvlToPvlTranslationManager instrumentXlater(inputLabel, transFile.expanded());
   instrumentXlater.Auto(*(outputLabel));
     //trim trailing z's from the time strings
@@ -103,7 +103,7 @@ void IsisMain() {
 
 
   // Translate the BandBin group
-  transFile = transDir + "kaguyamiBandBin.trn";
+  transFile = transDir + "KaguyaMiBandBin.trn";
   PvlToPvlTranslationManager bandBinXlater(inputLabel, transFile.expanded());
   bandBinXlater.Auto(*(outputLabel));
 
