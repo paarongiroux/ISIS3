@@ -62,7 +62,7 @@ void IsisMain() {
 
   // Translate the remaining MI MAP labels
   PvlGroup dataDir(Preference::Preferences().findGroup("DataDirectory"));
-  QString transDir = (QString) dataDir["Kaguya"] + "/translations/";
+  QString transDir = "$ISISROOT/appdata/translations/";
 
   FileName transFile(transDir + "mimapBandBin.trn");
   PvlToPvlTranslationManager bandBinXlater(label, transFile.expanded());

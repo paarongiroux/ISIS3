@@ -67,7 +67,7 @@ void IsisMain() {
 
   // Get the directory where the Kaguya MI translation tables are.
   PvlGroup dataDir(Preference::Preferences().findGroup("DataDirectory"));
-  QString transDir = (QString) dataDir["Kaguya"] + "/translations/";
+  QString transDir = "$ISISROOT/appdata/translations/";
   Pvl inputLabel(inFile.expanded());
   Pvl *outputLabel = outcube->label();
   FileName transFile;
