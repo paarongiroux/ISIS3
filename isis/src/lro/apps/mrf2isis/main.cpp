@@ -70,14 +70,18 @@ void IsisMain() {
   Pvl otherLabels;
   p.TranslatePdsProjection(otherLabels);
 
+  // Get the directory where the MiniRF level 2 translation tables are.
+  PvlGroup dataDir(Preference::Preferences().findGroup("DataDirectory"));
+  QString transDir = (QString) dataDir["Lro"] + "/translations/";
+
   if(id == "CHAN1-L-MRFFR-5-CDR-MAP-V1.0" || id == "LRO-L-MRFLRO-5-CDR-MAP-V1.0") {
     // Translate the BandBin group
-    FileName transFile("$ISISROOT/appdata/translations/MrfLev2BandBin.trn");
+    FileName transFile(transDir + "mrflev2BandBin.trn");
     PvlToPvlTranslationManager bandBinXlater(label, transFile.expanded());
     bandBinXlater.Auto(otherLabels);
 
     // Translate the Archive group
-    transFile = "$ISISROOT/appdata/translations/MrfLev2Archive.trn";
+    transFile = transDir + "mrflev2Archive.trn";
     PvlToPvlTranslationManager archiveXlater(label, transFile.expanded());
     archiveXlater.Auto(otherLabels);
 
@@ -88,22 +92,22 @@ void IsisMain() {
   }
   else {
     // Translate the BandBin group
-    FileName transFile("$ISISROOT/appdata/translations/MrfLev1BandBin.trn");
+    FileName transFile(transDir + "mrflev1BandBin.trn");
     PvlToPvlTranslationManager bandBinXlater(label, transFile.expanded());
     bandBinXlater.Auto(otherLabels);
 
     // Translate the Archive group
-    transFile = "$ISISROOT/appdata/translations/MrfLev1Archive.trn";
+    transFile = transDir + "mrflev1Archive.trn";
     PvlToPvlTranslationManager archiveXlater(label, transFile.expanded());
     archiveXlater.Auto(otherLabels);
 
     // Translate the Instrument group
-    transFile = "$ISISROOT/appdata/translations/MrfLev1Instrument.trn";
+    transFile = transDir + "mrflev1Instrument.trn";
     PvlToPvlTranslationManager instrumentXlater(label, transFile.expanded());
     instrumentXlater.Auto(otherLabels);
 
     // Translate the Image group
-    transFile = "$ISISROOT/appdata/translations/MrfLev1Image.trn";
+    transFile = transDir + "mrflev1Image.trn";
     PvlToPvlTranslationManager imageXlater(label, transFile.expanded());
     imageXlater.Auto(otherLabels);
 

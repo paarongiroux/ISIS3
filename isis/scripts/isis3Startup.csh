@@ -39,11 +39,11 @@ if ($?ISISROOT == 0) then
   setenv ISISROOT /usgs/pkgs/isis3/install
 endif
 
-# Initialize the ISISDATA environment variable
+# Initialize the ISIS3DATA environment variable
 if (-d $ISISROOT/../data) then
-  setenv ISISDATA $ISISROOT/../isis_data
+  setenv ISIS3DATA $ISISROOT/../data
 else
-  setenv ISISDATA /usgs/cpkgs/isis3/isis_data
+  setenv ISIS3DATA /usgs/cpkgs/isis3/data
 endif
 
 # Initialize the ISIS3TESTDATA environment variable

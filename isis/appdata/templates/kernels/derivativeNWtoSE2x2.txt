@@ -1,7 +1,0 @@
- Group=Kernel
-    samples=2
-    lines=2
-    weight=1.0
-    data= ( 1 , 0 ,
-	    0 ,-1 )
-  EndGroup

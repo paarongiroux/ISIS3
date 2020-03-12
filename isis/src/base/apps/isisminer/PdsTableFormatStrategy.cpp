@@ -107,7 +107,7 @@ namespace Isis {
 
     QString keyfmt = translateKeywordArgs("KeywordFormatFile", 
                                           getGlobals(m_parameters, globals),
-                                          "$ISISROOT/appdata/translations/pdsExportRootGen.typ");
+                                          "$base/translations/pdsExportRootGen.typ");
 
 
     // Remake new columns each time

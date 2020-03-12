@@ -4,11 +4,11 @@
 #=========================================================================
 
 # Multiple ISIS files need to find things relative to ISISROOT
-#  and ISISDATA so make sure those are set.
-set(ENV{ISISDATA} "${DATA_ROOT}")
+#  and ISIS3DATA so make sure those are set.
+set(ENV{ISIS3DATA} "${DATA_ROOT}")
 
 message(STATUS "ISISROOT = $ENV{ISISROOT}")
-message(STATUS "ISISDATA = $ENV{ISISDATA}")
+message(STATUS "ISIS3DATA = $ENV{ISIS3DATA}")
 
 # Set up a file for program output
 set(outputFile "${TEST_PROG}.output")

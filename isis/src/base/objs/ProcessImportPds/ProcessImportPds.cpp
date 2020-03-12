@@ -60,7 +60,8 @@ namespace Isis {
     p_projectionOffsetGroup.setName("ProjectionOffsets");
 
     // Set up a translater for PDS file of type IMAGE
-    p_transDir = "$ISISROOT/appdata";
+    Isis::PvlGroup &dataDir = Isis::Preference::Preferences().findGroup("DataDirectory");
+    p_transDir = (QString) dataDir["Base"];
   }
 
 
@@ -372,7 +373,7 @@ namespace Isis {
     yoff = 0.5;
 
     //  Open projectionOffsetMults file
-    Isis::Pvl p(p_transDir + "/" + "translations/pdsProjectionLineSampToXY.def");
+    Isis::Pvl p(p_transDir + "/" + "translations/pdsProjectionLineSampToXY_V2.def");
 
     Isis::PvlObject &projDef = p.findObject("ProjectionOffsetMults",
                                             Pvl::Traverse);
@@ -1462,12 +1463,13 @@ namespace Isis {
   /**
    * Fill as many of the Isis3 BandBin labels as possible
    *
-   * @param lab The label where the translated Isis2 keywords will
+   * @param lab The lable where the translated Isis2 keywords will
    *            be placed
    */
   void ProcessImportPds::TranslateIsis2BandBin(Isis::Pvl &lab) {
     // Set up a translater for Isis2 labels
-    QString transDir = "$ISISROOT/appdata";
+    Isis::PvlGroup &dataDir = Isis::Preference::Preferences().findGroup("DataDirectory");
+    QString transDir = (QString) dataDir["Base"];
 
     Isis::FileName transFile(transDir + "/" + "translations/isis2bandbin.trn");
     Isis::PvlToPvlTranslationManager isis2Xlater(p_pdsLabel, transFile.expanded());
@@ -1485,8 +1487,8 @@ namespace Isis {
    */
   void ProcessImportPds::TranslateIsis2Instrument(Isis::Pvl &lab) {
     // Set up a translater for Isis2 labels
-    QString transDir = "$ISISROOT/appdata";
-
+    Isis::PvlGroup &dataDir = Isis::Preference::Preferences().findGroup("DataDirectory");
+    QString transDir = (QString) dataDir["Base"];
     Isis::FileName transFile(transDir + "/" + "translations/isis2instrument.trn");
     Isis::PvlToPvlTranslationManager isis2Xlater(p_pdsLabel, transFile.expanded());
 
@@ -1597,7 +1599,8 @@ namespace Isis {
     Isis::PvlToPvlTranslationManager projType(p_pdsLabel, trnsStrm);
 
     // Set up the correct projection translation table for this label
-    QString transDir = "$ISISROOT/appdata";
+    Isis::PvlGroup &dataDir = Isis::Preference::Preferences().findGroup("DataDirectory");
+    QString transDir = (QString) dataDir["Base"];
 
     Isis::FileName transFile;
     if (projType.InputHasKeyword("PdsProjectionTypeImage")) {
@@ -1665,7 +1668,7 @@ namespace Isis {
     // contain the projection specific translations from PDS to ISIS for each
     // projection
 
-    QString projSpecificFileName = "$ISISROOT/appdata/translations/pdsImport";
+    QString projSpecificFileName = "$base/translations/pdsImport";
     projSpecificFileName += p_projection + ".trn";
     Isis::PvlToPvlTranslationManager specificXlater(p_pdsLabel, projSpecificFileName);
 

@@ -17,11 +17,11 @@ if [ ! "$ISISROOT" ]; then
 fi
 
 if [ -d $ISISROOT/../data ]; then
-  ISISDATA=$ISISROOT/../isis_data
+  ISIS3DATA=$ISISROOT/../data
 else
-  ISISDATA=/usgs/cpkgs/isis3/isis_data
+  ISIS3DATA=/usgs/cpkgs/isis3/data
 fi
-export ISISDATA
+export ISIS3DATA
 
 # Do not export when used by outside groups
 if [ -d $ISISROOT/../testData ]; then

@@ -146,15 +146,18 @@ void OutputLabel ( std::ofstream &fout, Cube* cube ) {
 
     //Pvl to store the labels
     Pvl outLabel;
-    PvlFormatPds *p_formatter = new PvlFormatPds("$ISISROOT/appdata/translations/LroNacPdsExportRootGen.typ");
+    PvlFormatPds *p_formatter = new PvlFormatPds("$lro/translations/pdsExportRootGen.typ");
     labelPvl.setFormat(p_formatter);
     labelPvl.setTerminator("END");
+    //Set up the directory where the translations are
+    PvlGroup dataDir(Preference::Preferences().findGroup("DataDirectory"));
+    QString transDir = (QString) dataDir["Lro"] + "/translations/";
 
     stringstream stream;
     QString pdsLabel = "";
 
     //Translate the Original Pds Label
-    FileName transFile("$ISISROOT/appdata/translations/LroNacPdsLabelExport.trn");
+    FileName transFile(transDir + "lronacPdsLabelExport.trn");
     PvlToPvlTranslationManager labelXlator(labelPvl, transFile.expanded());
     labelXlator.Auto(outLabel);
 

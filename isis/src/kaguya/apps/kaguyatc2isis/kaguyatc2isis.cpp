@@ -86,7 +86,6 @@ namespace Isis {
 
     // Translate the remaining MI MAP labels
     PvlGroup dataDir(Preference::Preferences().findGroup("DataDirectory"));
-<<<<<<< HEAD
     QString transDir = (QString) dataDir["Kaguya"] + "/translations/";
 
     FileName transFile(transDir + "kaguyaTcBandBin.trn");
@@ -102,23 +101,6 @@ namespace Isis {
     archiveXlater.Auto(otherLabels);
 
     transFile = transDir + "kaguyaTcKernels.trn";
-=======
-    QString transDir = "$ISISROOT/appdata/translations/";
-
-    FileName transFile(transDir + "KaguyaTcBandBin.trn");
-    PvlToPvlTranslationManager bandBinXlater(label, transFile.expanded());
-    bandBinXlater.Auto(otherLabels);
-
-    transFile = transDir + "KaguyaTcInstrument.trn";
-    PvlToPvlTranslationManager instXlater(label, transFile.expanded());
-    instXlater.Auto(otherLabels);
-
-    transFile = transDir + "KaguyaTcArchive.trn";
-    PvlToPvlTranslationManager archiveXlater(label, transFile.expanded());
-    archiveXlater.Auto(otherLabels);
-
-    transFile = transDir + "KaguyaTcKernels.trn";
->>>>>>> 4a7b2a08fe43f34dd0030b4fcf267e1c1812e801
     PvlToPvlTranslationManager kernelsXlater(label, transFile.expanded());
     kernelsXlater.Auto(otherLabels);
 
